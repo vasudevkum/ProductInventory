@@ -11,22 +11,22 @@ class ProductController extends Controller
 
 public function __construct()
 {
-    $this->file = storage_path('Products.json'); // ✅ correct
+    $this->file = storage_path('Products.json'); 
 }
 
-    // 🔷 Helper: Read File
+    //  Helper: Read File
     private function readData()
     {
         return json_decode(file_get_contents($this->file), true);
     }
 
-    // 🔷 Helper: Write File
+    // Helper: Write File
     private function writeData($data)
     {
         file_put_contents($this->file, json_encode($data, JSON_PRETTY_PRINT));
     }
 
-    // 🔥 API 1: CREATE PRODUCT
+    // API 1: CREATE PRODUCT
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -57,7 +57,7 @@ public function __construct()
         return response()->json($newProduct, 201);
     }
 
-    // 🔥 API 2: GET PRODUCT
+    // API 2: GET PRODUCT
     public function show($id)
     {
         $products = $this->readData();
@@ -71,7 +71,7 @@ public function __construct()
         return response()->json(['message' => 'Product not found'], 404);
     }
 
-    // 🔥 API 3: UPDATE PRODUCT (PARTIAL)
+    // API 3: UPDATE PRODUCT (PARTIAL)
     public function update(Request $request, $id)
     {
         $products = $this->readData();
