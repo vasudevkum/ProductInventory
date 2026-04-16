@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "name": "Laptop",
+        "description": "Gaming",
+        "price": 50000,
+        "quantity": 5
+    }
+]
